@@ -20,8 +20,9 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		D7568321213B298800F3AFE7 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7568320213B298800F3AFE7 /* Image.swift */; };
 		D7CE75BF213AAB8E0043CFBE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE75BE213AAB8E0043CFBE /* UIImageViewExtension.swift */; };
-		D7CE75C1213AF4A20043CFBE /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE75C0213AF4A20043CFBE /* JsonHelper.swift */; };
+		D7CE75C1213AF4A20043CFBE /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE75C0213AF4A20043CFBE /* ImageHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +48,9 @@
 		A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CF2C9E50C19A9188464AE19E /* Pods-Koloda_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6781607B5327BAF503C32E3 /* Koloda.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Koloda.podspec; path = ../Koloda.podspec; sourceTree = "<group>"; };
+		D7568320213B298800F3AFE7 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		D7CE75BE213AAB8E0043CFBE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		D7CE75C0213AF4A20043CFBE /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		D7CE75C0213AF4A20043CFBE /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +147,8 @@
 		D7CE75C2213AF75C0043CFBE /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
-				D7CE75C0213AF4A20043CFBE /* JsonHelper.swift */,
+				D7568320213B298800F3AFE7 /* Image.swift */,
+				D7CE75C0213AF4A20043CFBE /* ImageHelper.swift */,
 			);
 			name = Instagram;
 			sourceTree = "<group>";
@@ -249,11 +252,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7CE75C1213AF4A20043CFBE /* JsonHelper.swift in Sources */,
+				D7CE75C1213AF4A20043CFBE /* ImageHelper.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
@@ -277,6 +282,7 @@
 				4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */,
 				D7CE75BF213AAB8E0043CFBE /* UIImageViewExtension.swift in Sources */,
 				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
+				D7568321213B298800F3AFE7 /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

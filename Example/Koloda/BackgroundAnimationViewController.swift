@@ -9,6 +9,7 @@
 import UIKit
 import Koloda
 import pop
+import SwiftyJSON
 
 private let numberOfCards: Int = 5
 private let frameAnimationSpringBounciness: CGFloat = 9
@@ -19,6 +20,8 @@ private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 class BackgroundAnimationViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: CustomKolodaView!
+    
+    var imageList = [Image]()
     
     var imageURLs: [String] = ["https://i.pinimg.com/originals/8b/90/2f/8b902f3b8e4d39ebecc9784bca68cbb5.png",
                                "https://cf.girlsaskguys.com/a54462/19874751-cc6f-447a-99bf-03d3a170493d.jpg",
@@ -32,17 +35,11 @@ class BackgroundAnimationViewController: UIViewController {
                                "https://cf.kizlarsoruyor.com/q5501264/4bea3a74-f479-4594-8493-62e2fd266e43.jpg"
                                ]
     
-//    let jsonHelper = JsonHelper()
-    
-    
-    
     //MARK: Lifecycle
+   
     override func viewDidLoad() {
+        getImageList()
         super.viewDidLoad()
-        
-//        jsonHelper.getJson()
-        
-        
         
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
         kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
@@ -51,6 +48,31 @@ class BackgroundAnimationViewController: UIViewController {
         kolodaView.animator = BackgroundKolodaAnimator(koloda: kolodaView)
         
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+    }
+    
+    func getImageList() {
+        guard let url = URL(string: "https://www.instagram.com/explore/tags/beautifulgirl/?__a=1") else { return }
+        let imageHelper = ImageHelper()
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do
+            {
+                let json = try JSON(data: dataResponse)
+                self.imageList = imageHelper.getImageList(fromJson: json)
+                DispatchQueue.main.async() {
+                    self.kolodaView.reloadData()
+                }
+                
+            } catch let parsingError {
+                print("Error while fetching data from network !!", parsingError)
+            }
+        }
+        task.resume()
+        
     }
     
     
@@ -108,16 +130,19 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
 //        return numberOfCards
-        return imageURLs.count
+        return imageList.count
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         //return UIImageView(image: UIImage(named: "cards_\(index + 1)"))
+        let imageView: UIImageView = UIImageView()
         
+        if imageList.count == 0 || imageList.count <= index { return imageView }
         
         //Ozkan:
-        let imageView: UIImageView = UIImageView()
-        imageView.downloaded(from: imageURLs[index])
+        
+        //imageView.downloaded(from: imageURLs[index])
+        imageView.downloaded(from: imageList[index].url)
 
         return imageView
         
