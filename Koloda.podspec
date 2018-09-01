@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-	s.name             = "Koloda"
+	s.name             = "Kesfet"
 	s.version          = '4.4'
-	s.summary          = "KolodaView is a class designed to simplify the implementation of Tinder like cards on iOS. "
+	s.summary          = ""
 
-	s.homepage         = "https://github.com/Yalantis/Koloda"
+	s.homepage         = ""
 	s.license          = 'MIT'
-	s.author           = "Yalantis"
+	s.author           = "Ozkan"
 	s.source           = { :git => "https://github.com/Yalantis/Koloda.git", :tag => s.version }
-	s.social_media_url = 'https://twitter.com/yalantis'
+	s.social_media_url = ''
 
 	s.platform     = :ios, '8.0'
 	s.source_files = 'Pod/Classes/**/*'

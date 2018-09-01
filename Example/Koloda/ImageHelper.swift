@@ -42,6 +42,7 @@ class ImageHelper {
         image.likeCount = node["node"]["edge_liked_by"]["count"].intValue
         image.previewLikeCount = node["node"]["edge_media_preview_like"]["count"].intValue
         image.text = node["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"].stringValue
+        image.shortCode = node["node"]["shortcode"].stringValue
         
         return image
     }

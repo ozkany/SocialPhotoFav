@@ -11,7 +11,8 @@ import Foundation
 class Image {
     var url : String = ""
     var text: String = ""
-    var likeCount : Int = 0
-    var previewLikeCount : Int = 0
-    var commentCount : Int = 0
+    var likeCount: Int = 0
+    var previewLikeCount: Int = 0
+    var commentCount: Int = 0
+    var shortCode: String = ""
 }
